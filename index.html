@@ -58,6 +58,11 @@
         height: 60px;
         cursor: pointer;
       }
+
+      #text {
+        font-size: 30px;
+        margin-top: 110px;
+      }
     </style>
   </head>
   <body onclick="puld()">
@@ -79,9 +84,16 @@
         // remove tap element from body
         document.body.removeChild(tap);
 
+        // add text with glowing effect
+        var text = document.createElement("div");
+        text.id = "text";
+        text.innerHTML = ">_<";
+        text.classList.add("glow");
+        document.body.appendChild(text);
+
         // create GitHub logo link
         var githubLogo = document.createElement("a");
-        githubLogo.href = "https://github.com/Impuld";
+        githubLogo.href = "https://github.com/WhoNoah";
         githubLogo.target = "_blank";
         var githubImg = document.createElement("img");
         githubImg.id = "github-logo";
@@ -94,6 +106,12 @@
         var audio = document.getElementById("audio");
         audio.volume = 0.1;
         audio.play();
+
+        // change the background image when "puld" appears
+        document.body.style.backgroundImage =
+          "url('https://i.gifer.com/origin/07/07a0b65136f5b9007bdb77d6f71657c9_w200.gif')";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
       }
     </script>
   </body>
