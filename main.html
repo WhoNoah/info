@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>puld#7132</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-size: 50px;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        user-select: none; /* prevent text selection on double-click */
+      }
+      .glow {
+        animation: glowing 2000ms infinite;
+      }
+
+      @keyframes glowing {
+        0% {
+          text-shadow: 0 0 20px white;
+        }
+
+        25% {
+          text-shadow: 0 0 10px white;
+        }
+        50% {
+          text-shadow: 0 0 30px white;
+        }
+        75% {
+          text-shadow: 0 0 10px white;
+        }
+
+        100% {
+          text-shadow: 0 0 20px white;
+        }
+      }
+
+      /* import custom font file for puld text */
+      @font-face {
+        font-family: "mof2";
+        src: url("Matter Of Fact.ttf");
+      }
+
+      /* apply custom font and size to puld text */
+      #puld {
+        font-family: "mof2";
+        font-size: 100px;
+      }
+
+      /* add GitHub logo and link */
+      #github-logo {
+        margin-top: 20px;
+        height: 60px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body onclick="puld()">
+    <div id="tap">[ click ]</div>
+    <audio id="audio" src="music.mp3"></audio>
+    <!-- Add an HTML5 audio element -->
+
+    <script>
+      function puld() {
+        var tap = document.getElementById("tap");
+        var puld = document.createElement("div");
+        puld.id = "puld";
+        puld.innerHTML = "puld";
+        puld.classList.add("glow");
+        // remove onclick event to prevent multiple triggers
+        document.body.onclick = null;
+        // append new div element to body
+        document.body.appendChild(puld);
+        // remove tap element from body
+        document.body.removeChild(tap);
+
+        // create GitHub logo link
+        var githubLogo = document.createElement("a");
+        githubLogo.href = "https://github.com/WhoNoah";
+        githubLogo.target = "_blank";
+        var githubImg = document.createElement("img");
+        githubImg.id = "github-logo";
+        githubImg.src =
+          "https://assets.stickpng.com/images/5847f98fcef1014c0b5e48c0.png";
+        githubLogo.appendChild(githubImg);
+        document.body.appendChild(githubLogo);
+
+        // play the music when "puld" appears
+        var audio = document.getElementById("audio");
+        audio.volume = 0.1;
+        audio.play();
+      }
+    </script>
+  </body>
+</html>
